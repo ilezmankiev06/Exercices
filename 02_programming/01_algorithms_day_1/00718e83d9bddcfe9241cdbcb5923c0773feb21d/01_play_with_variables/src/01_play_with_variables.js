@@ -7,12 +7,12 @@ const foo = 12;
 // a constant called `bar`, bound to an integer: 28;
 const bar = 28;
 // a constant called `sumResult`, bound to the sum of `foo` and `bar`;
-const sumResult = `${foo} + ${bar}`;
+const sumResult = foo + bar;
 // a constant called `prodResult`, bound to the product of `bar` and `foo`.
-const prodResult = `${bar} * ${foo}`;
+const prodResult = bar * foo;
 // a constant called `sparta`, bound to an object with a field `check`, with the value of `ask` and with the field `response`, with the value of `answer`;
-const sparta = {check: "ask", response: "answer"};
+const sparta = {check: question,response: answer};
 // a constant called `leader`, bound to the value of the field `check` of the object `sparta`;
-const leader = `${check}`;
+const leader = sparta["check"];
 // a constant called `digits`, bound to an array from zero to nine.
-const digits = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
