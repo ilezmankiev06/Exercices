@@ -14,3 +14,9 @@ const literalDigits = [
   "eight",
   "nine",
 ];
+for (let i = 0; i < literalDigits.length; i++)
+{
+  literalDigits.reverse();
+  console.log(literalDigits[i]);
+  literalDigits.reverse();
+}
