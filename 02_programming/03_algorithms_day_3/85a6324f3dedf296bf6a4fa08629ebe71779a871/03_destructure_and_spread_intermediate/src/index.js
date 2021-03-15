@@ -23,14 +23,14 @@ let developer = {
   ...knowledge,
 };
 
-let bug = "bug";
-let code = "code";
+let bug;
+let code;
 
 let application = ["bug", "code", "code", "code", "code", "code", "code", "code", "code"];
 
 
 // code here
-[bug, ...code] = ["bug", "code", "code", "code", "code", "code", "code", "code", "code"];
+[bug, ...code] = application;
 console.log(code);
 module.exports = {
   developer,
