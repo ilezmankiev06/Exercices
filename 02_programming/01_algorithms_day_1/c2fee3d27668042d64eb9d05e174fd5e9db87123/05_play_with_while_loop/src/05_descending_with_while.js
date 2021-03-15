@@ -14,3 +14,10 @@ const litteralDigits = [
   "eight",
   "nine",
 ];
+let i = 0;
+while (i < litteralDigits.length) {
+  i++;
+  litteralDigits.reverse();
+  console.log(litteralDigits[i-1]);
+  litteralDigits.reverse();
+}
