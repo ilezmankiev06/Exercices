@@ -111,6 +111,7 @@ describe("Number Game with stats", () => {
     const reader = readerMockFactory([(_question, callback) => callback(1), (_question, callback) => callback(42)]);
 
     numberGame(reader);
+    
     expect(logs).toMatch("2");
     fakeLog.mockRestore();
   });
