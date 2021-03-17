@@ -14,7 +14,7 @@ const greeter = {
     console.log(`hello ${name}!`);
     return this;
   },
-};
+};d
 
 greeter.greet("Joe").greet("Mike").greet("Robert");
 // Hello Joe!
