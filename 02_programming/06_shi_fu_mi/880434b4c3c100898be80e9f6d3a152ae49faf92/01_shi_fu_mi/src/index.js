@@ -38,49 +38,33 @@ const scissors = [
   "---.__(___)        ",
 ];
 
-reader.question("What is your name? ", (name) => {
-  console.log(`Hello ${name}, welcome to the shiFuMi: ShiFuMi`);
-  console.log("The moovements available are\n");
-  rock.forEach((element) => console.log(element));
-  paper.forEach((element) => console.log(element));
-  scissors.forEach((element) => console.log(element));
-  reader.question("Choose your moove, rock paper scissors? [1, 2, 3]", shiFuMi);
+reader.question("What is your name? :", (name) => {
+  console.log(`Hello ${name}, welcome to the game: ShiFuMi`);
+  reader.question("Choose your moove, rock paper scissors? [1, 2, 3]:\n>", shiFuMi);
 });
 
 function shiFuMi(moove) {
-    if (moove === "1") {
-      clear();
-      rock.forEach((element) => console.log(element));
-    } else if (moove === "2") {
-      clear();
-      paper.forEach((element) => console.log(element));
-    } else if (moove === "3") {
-      clear();
-      scissors.forEach((element) => console.log(element));
-    } else {
-      console.log("Mauvaise input");
-      reader.question("Choose your moove, rock paper scissors? [1, 2, 3]", shiFuMi);
-    }
-    getRandomNumber();
-    compare();
-    reader.close();
+  if (moove === "1") {
+    clear();
+    rock.forEach(element => console.log(element));
+  } else if (moove === "2") {
+    clear();
+    paper.forEach(element => console.log(element));
+  } else if (moove === "3") {
+    clear();
+    scissors.forEach(element => console.log(element));
+  } else {
+    console.log("Mauvaise input");
+    reader.question("Choose your moove, rock paper scissors? [1, 2, 3]", shiFuMi);
   }
-
-function getRandom(min, max) {
-  return Math.random() * (max - min) + min;
-}
-function getRandomNumber() {
-  let choixOrdi = parseInt(getRandom(1, 4)).toString();
-  if (choixOrdi === "1") {
-    rock.forEach((element) => console.log(element));
-  } else if (choixOrdi === "2") {
-    paper.forEach((element) => console.log(element));
-  } else if (choixOrdi === "3") {
-    scissors.forEach((element) => console.log(element));
+  const choixOrdi = parseInt(Math.random() * (4 - 1) + 1);
+  if (choixOrdi.toString() === "1") {
+    rock.forEach(element => console.log(element));
+  } else if (choixOrdi.toString() === "2") {
+    paper.forEach(element => console.log(element));
+  } else if (choixOrdi.toString() === "3") {
+    scissors.forEach(element => console.log(element));
   }
-  return choixOrdi;
-}
-function compare(moove, choixOrdi) {
   if (
     (moove === "1" && choixOrdi === "3") ||
     (moove === "2" && choixOrdi === "1") ||
