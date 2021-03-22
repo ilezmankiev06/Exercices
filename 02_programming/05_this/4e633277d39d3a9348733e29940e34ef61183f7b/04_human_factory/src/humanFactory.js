@@ -25,7 +25,7 @@ const createHumans = (humans) => {
   return humans.map(humanFactory);
 };
 
-const humans2 = createHumans([{ lastName: "Toto" }, { genre: "female" }]);
+const humans2 = createHumans([{ lastName: "Toto",genre: "female" }]);
 console.log(humans2);
 
 module.exports = {
