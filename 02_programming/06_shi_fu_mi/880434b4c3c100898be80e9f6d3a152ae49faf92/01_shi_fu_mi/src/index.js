@@ -166,5 +166,16 @@ function play() {
   });
 }
 
+function play() {
+  reader.question("Do you want to use calculator?\nChoose a number\n> ", (type) => {
+    if (type == 1) {
+      firstInput();
+    }
+    if (type == 2) {
+      reader.close();
+    }
+  });
+}
+
 console.log("Hello!\nWelcome to the ShiFuMi!");
 play();
