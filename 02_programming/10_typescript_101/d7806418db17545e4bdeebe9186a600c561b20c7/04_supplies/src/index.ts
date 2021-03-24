@@ -1,5 +1,8 @@
 type Supplies = {
   // Write your code here.
+  [key: string]: number;
+
+  
 };
 
 const supplies: Supplies = {};

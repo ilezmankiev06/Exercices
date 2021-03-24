@@ -97,33 +97,33 @@ const winner = (players, firstPlayerMove, secondPlayerMove) => {
   }
 };
 
-function twoPlayers() {
-  reader.question("Enter first player's name\n>", (firstPlayerName) => {
-    reader.question("Enter second player's name\n>", (secondPlayerName) => {
-      reader.question(`${firstPlayerName} Choose a move:\nRock Paper Scissors? [1, 2, 3]\n> `, (firstPlayerChoice) => {
-        const firstPlayerMove = moves.symbols[firstPlayerChoice - 1];
-        reader.question(
-          `${secondPlayerName} Choose a move:\nRock Paper Scissors? [1, 2, 3]\n> `,
-          (secondPlayerChoice) => {
-            const secondPlayerMove = moves.symbols[secondPlayerChoice - 1];
-            printSymbol(firstPlayerName, 1, firstPlayerMove);
-            printSymbol(secondPlayerName, 2, secondPlayerMove);
-            const result = winner([firstPlayerName, secondPlayerName], firstPlayerMove, secondPlayerName);
-            console.log(result === "draw" ? "It's a draw!" : `${result} won!!`);
-            reader.question("\nPlay again ?(Y,n)\n> ", (replay) => {
-              if (replay.toLowerCase() === "n") {
-                console.log("Thanks for the game 😉");
-                reader.close();
-              } else {
-                twoPlayers();
-              }
-            });
-          },
-        );
-      });
-    });
-  });
-}
+// function twoPlayers() {
+//   reader.question("Enter first player's name\n>", (firstPlayerName) => {
+//     reader.question("Enter second player's name\n>", (secondPlayerName) => {
+//       reader.question(`${firstPlayerName} Choose a move:\nRock Paper Scissors? [1, 2, 3]\n> `, (firstPlayerChoice) => {
+//         const firstPlayerMove = moves.symbols[firstPlayerChoice - 1];
+//         reader.question(
+//           `${secondPlayerName} Choose a move:\nRock Paper Scissors? [1, 2, 3]\n> `,
+//           (secondPlayerChoice) => {
+//             const secondPlayerMove = moves.symbols[secondPlayerChoice - 1];
+//             printSymbol(firstPlayerName, 1, firstPlayerMove);
+//             printSymbol(secondPlayerName, 2, secondPlayerMove);
+//             const result = winner([firstPlayerName, secondPlayerName], firstPlayerMove, secondPlayerName);
+//             console.log(result === "draw" ? "It's a draw!" : `${result} won!!`);
+//             reader.question("\nPlay again ?(Y,n)\n> ", (replay) => {
+//               if (replay.toLowerCase() === "n") {
+//                 console.log("Thanks for the game 😉");
+//                 reader.close();
+//               } else {
+//                 twoPlayers();
+//               }
+//             });
+//           },
+//         );
+//       });
+//     });
+//   });
+// }
 
 function vsCpu() {
   reader.question("Choose a move:\nRock Paper Scissors? [1, 2, 3]\n> ", (move) => {
@@ -153,29 +153,30 @@ function vsCpu() {
 }
 
 function play() {
-  const rules = ["Versus CPU", "Two players single game"]
+  const rules = ["Versus CPU", "Stop the game"]
     .map((r, i) => `${i + 1} - ${r}`)
     .join("\n");
-  reader.question("How do you want to play?\n" + rules + "\nChoose a number\n> ", (gameType) => {
+  reader.question("Do you want to play?\n" + rules + "\nChoose a number\n> ", (gameType) => {
     if (gameType == 1) {
       vsCpu();
     }
     if (gameType == 2) {
-      twoPlayers();
-    }
-  });
-}
-
-function play() {
-  reader.question("Do you want to use calculator?\nChoose a number\n> ", (type) => {
-    if (type == 1) {
-      firstInput();
-    }
-    if (type == 2) {
+      console.log("Bye bye");
       reader.close();
     }
   });
 }
+
+// function play() {
+//   reader.question("Do you want to use calculator?\nChoose a number\n> ", (type) => {
+//     if (type == 1) {
+//       firstInput();
+//     }
+//     if (type == 2) {
+//       reader.close();
+//     }
+//   });
+// }
 
 console.log("Hello!\nWelcome to the ShiFuMi!");
 play();
