@@ -12,24 +12,36 @@ export type GitHub = {
 }
 
 export class GithubClient {
-  static getReposUrl() {
+  static getReposUrl(nickname: string): Promise<string> {
     // You code goes here
+    return new Promise((resolve) => {
+      const url = getReposUrlByNickname(nickname).catch((error => console.error(error)));
+      resolve(url);
+    });
   }
 
-  static getRepos() {
+  static getRepos(url: string): Promise<string> {
     // You code goes here
+    return new Promise((resolve) => {
+    listRepos(url);
+    resolve(url);
+    })
   }
 
   static printRepos() {
     // You code goes here
+
+
   }
 
   
   static printRepository() {
     // You code goes here
+
   }
   
-  static getProjectInformations() {
+  static getProjectInformations(url: string) {
     // You code goes here
+    getOneRepoInfos(url);
   }
 }
