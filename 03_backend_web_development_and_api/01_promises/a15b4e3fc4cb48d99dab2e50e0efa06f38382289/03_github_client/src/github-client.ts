@@ -15,8 +15,8 @@ export class GithubClient {
   static getReposUrl(nickname: string): Promise<string> {
     // You code goes here
     return new Promise((resolve) => {
-      const url = getReposUrlByNickname(nickname).catch((error => console.error(error)));
-      resolve(url);
+      getReposUrlByNickname(nickname);
+      resolve(nickname);
     });
   }
 
@@ -28,20 +28,23 @@ export class GithubClient {
     })
   }
 
-  static printRepos() {
-    // You code goes here
+  // static printRepos() {
+  //   // You code goes here
 
 
-  }
+  // }
 
   
-  static printRepository() {
-    // You code goes here
+  // static printRepository() {
+  //   // You code goes here
 
-  }
+  // }
   
-  static getProjectInformations(url: string) {
+  static getProjectInformations(url: string): Promise<string> {
     // You code goes here
-    getOneRepoInfos(url);
+    return new Promise((resolve) => {
+      getOneRepoInfos(url);
+      resolve("");
+    })
   }
 }
