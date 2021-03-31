@@ -2,10 +2,7 @@ import { getChuckCategories, getChuckJoke } from "../utils";
 
 function getCategories(): Promise<string[]> {
   // Your code goes here
-  return new Promise((resolve) => {
-    const categorie = getChuckCategories();
-    resolve(categorie);
-  });
+  return getChuckCategories();
 }
 
 function getJoke(category: string): Promise<string> {
