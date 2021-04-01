@@ -1,14 +1,11 @@
 export function rectangle(width: number, height: number): string { 
 
-    const result: string[] = [];
-    let res: string = "";
-
+    let rectangle: string = "";
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
-        res += "*";
+        rectangle += "*";
+      }
+      rectangle += "\n";
     }
-    result.push(res);
-    res = "";
-    }
-    return result.join("\n");
-}
+    return rectangle;
+  }
