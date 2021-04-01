@@ -5,9 +5,9 @@ const getDatabaseUrl = ({ testEnvironment } = { testEnvironment: false }): strin
     return process.env.CI_MONGODB_DATABASE_URL
   }
   if (process.env.MONGODB_DATABASE_URL) {
-    const match = process.cwd().match(/\d{2}_(?<day>\w*)\/exercises\/(?<exerciseName>\w*)/);
+    const match = process.cwd().match(/.*\/(?<exerciseName>\w*)/);
     if (match) {
-      if (match && match.groups && match.groups.exerciseName && match.groups.day) {
+      if (match && match.groups && match.groups.exerciseName) {
         const {
           groups: { exerciseName },
         } = match;
@@ -20,5 +20,4 @@ const getDatabaseUrl = ({ testEnvironment } = { testEnvironment: false }): strin
   }
   throw new Error("⚠️  No `MONGODB_DATABASE_URL` environment variable found.\nDid you 'source .env_vars'?")
 };
-
 export { getDatabaseUrl };
