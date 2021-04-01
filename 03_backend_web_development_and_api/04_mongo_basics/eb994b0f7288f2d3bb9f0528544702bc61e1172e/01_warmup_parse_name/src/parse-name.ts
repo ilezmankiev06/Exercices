@@ -4,5 +4,9 @@ type Person = {
 }
 
 export function parseName(name: string): Person {
-  name;
+  const array: string[] = name.split(" ");
+  return {
+    firstName: array[0],
+    lastName: array[1]
+  }
 }
