@@ -1,7 +1,7 @@
 // DO NOT CHANGE ANYTHING IN THIS FILE
 import * as jsonServer from "json-server"
 
-function startServer(repositories: object): Express.Application {
+function startServer(repositories: Record<string, unknown>): Express.Application {
   if (!process.env.BASE_URL || !process.env.PORT) {
     throw new Error(
       "No 'BASE_URL' and `PORT` env variable\n=> run `source .env_vars`"
