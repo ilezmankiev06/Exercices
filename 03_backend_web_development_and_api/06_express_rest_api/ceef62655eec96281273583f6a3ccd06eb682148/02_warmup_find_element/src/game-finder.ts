@@ -1,5 +1,6 @@
 
 export function findGameFromSlug(games: Game[], slug: string): Game {
+  return games.find((element) => element.slug === slug ? "exist" : undefined)
 }
 
 export type Game = {
