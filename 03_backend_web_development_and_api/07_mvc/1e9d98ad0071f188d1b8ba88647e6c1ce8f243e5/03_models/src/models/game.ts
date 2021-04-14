@@ -51,15 +51,19 @@ export class GameModel {
     })
   }
   getPlatforms(): Platform[] {
-    const result = this.collection.map(response => {
-      return {
-        name: response.platform.name,
-        slug: response.platform.slug,
+    const result: Platform[] = [];
+    this.collection.forEach((game) => {
+      if (
+        result.find((platform) => {
+          return game.platform.slug === platform.slug;
+        }) === undefined
+      ) {
+        result.push({
+          name: game.platform.name,
+          slug: game.platform.slug,
+        });
       }
-    })
-    const platforms = Array.from(new Set(result))
-    return platforms
-    // result.filter((item, index) => result.indexOf(item) === index)
-    // return result;
+    });
+    return result;
   }
 }
