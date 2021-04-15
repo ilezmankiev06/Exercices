@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import { Collection } from "mongodb"
 
 dotenv.config();
 
@@ -15,68 +16,59 @@ export type Platform = {
 };
  
 export class GameModel {
-    collection: Game[];
+    private collection: Collection;
   
-constructor(collection: Game[]) {
+constructor(collection: Collection) {
     this.collection = collection;
 }
 
-getAll(db: ): Promise<Game[]> {
-    return new Promise((resolve) => {
-        resolve (this.collection.map((game) => {
-            return {
-              name: game.name,
-              slug: game.slug,
-              cover: game.url,
-            }
-          }))
+getAll(): Promise<Game[]> {
+  return this.collection.find().toArray()
+  .then((games) => {
+    return games.map((game) => {
+      return {
+      name: game.name,
+      slug: game.slug,
+      cover: game.url,
+      }
     })
-  }
+  })
+}
 
 findBySlug(slug: string): Promise<Game | null> {
-    return new Promise((resolve) => {
-        const games = this.collection.find((game) => {
-            if (slug === game.slug) {
-              return slug;
-            } 
-            });
-            if (games) {
-              resolve(games)
-            } else {
-              resolve(null)
-            } 
-    })
+  return this.collection.findOne({slug: slug})
 }
 
 findByPlatform(platform_slug: string): Promise<Game[]> {
-    return new Promise((resolve) => {
-        resolve(this.collection.filter((element) => {
-            if(element.platform.slug === platform_slug){
-              return {
-                name: element.name,
-                slug: element.slug,
-              }
-            }
-          }))
+  return this.collection.find().toArray()
+    .then((games) => {
+      return games.filter((game) => {
+        if(game.platform.slug === platform_slug) {
+          return {
+            name: game.name,
+            slug: game.slug,
+          }
+        }
+      })
     })
 }
 
 getPlatforms(): Promise<Platform[]> {
-    return new Promise((resolve) => {
-        const result: Platform[] = [];
-        this.collection.forEach((game) => {
-          if (
-            result.find((platform) => {
-              return game.platform.slug === platform.slug;
-            }) === undefined
-          ) {
-            result.push({
-              name: game.platform.name,
-              slug: game.platform.slug,
-            });
-          }
-        });
-        resolve(result); 
-    })
-} 
+    return this.collection.find().toArray()
+    .then((games) => {
+    const result: Platform[] = [];
+      games.find((game) => {
+        if (result.find((platform) => {
+          return game.platform.slug === platform.slug;
+        }) === undefined
+        ) {
+          result.push({
+            name: game.platform.name,
+            slug: game.platform.slug,
+          });
+        }
+      });       
+      return result;
+    });
+}
 }

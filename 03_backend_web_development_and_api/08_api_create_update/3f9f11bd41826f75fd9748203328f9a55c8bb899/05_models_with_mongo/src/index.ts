@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import { initDB } from "./init-database";
 import { GameModel } from "./models/game";
 
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
