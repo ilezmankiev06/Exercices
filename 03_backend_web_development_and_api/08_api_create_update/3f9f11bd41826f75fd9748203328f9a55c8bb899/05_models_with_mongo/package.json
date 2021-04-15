@@ -63,7 +63,9 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "@types/express": "^4.17.11",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "mongodb": "^3.6.6"
   }
 }
