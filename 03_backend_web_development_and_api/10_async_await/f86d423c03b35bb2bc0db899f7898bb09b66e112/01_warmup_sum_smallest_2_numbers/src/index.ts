@@ -30,7 +30,7 @@ export function sumTwoSmallestNumbers(numbers: number[]): number {
     }
     return result;
   }
-// console.log(sumTwoSmallestNumbers([19, 5, 42, 2, 77]));
+// console.log(sumTwoSmallestNumbers([-19, 5, 42, 2, 77]));
 
 // export function sumTwoSmallestNumbers(numbers: number[]): number {  
 //   if (numbers.length < 4) {
