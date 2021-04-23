@@ -64,6 +64,14 @@ export function makeApp(gameModel: GameModel): core.Express {
       });
   });
 
+  app.get("/Contact", (request, response) => {
+    response.render("contact");
+  });
+
+  app.get("/Home", (request, response) => {
+    response.render("home");
+  });
+
   app.get("/*", (request, response) => {
     response.status(400).render("not-found");
   });

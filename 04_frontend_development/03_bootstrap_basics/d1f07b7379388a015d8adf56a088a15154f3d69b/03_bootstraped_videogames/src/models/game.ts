@@ -24,6 +24,7 @@ export class GameModel {
       name: game.name,
       slug: game.slug,
       cover: game.cover_url,
+      logo: game.platform_logo_url,
     };
   }
 
