@@ -4,17 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import {
-  openBrowser,
-  listItem,
-  intercept,
-  closeBrowser,
-  goto,
-  $,
-  dropDown,
-  click,
-  text,
-} from "taiko";
+import { openBrowser, listItem, intercept, closeBrowser, goto, $, dropDown, click, text } from "taiko";
 
 const ps4 = platforms.find((platform) => platform.slug === "ps4");
 
@@ -32,13 +22,10 @@ describe("Interact with APIs", () => {
     expect.assertions(1);
     let requestHasBeenMade = false;
     try {
-      intercept(
-        "https://videogames-sparta.herokuapp.com/platforms",
-        (request) => {
-          requestHasBeenMade = true;
-          request.respond({ body: platforms });
-        },
-      );
+      intercept("https://videogames-sparta.herokuapp.com/platforms", (request) => {
+        requestHasBeenMade = true;
+        request.respond({ body: platforms });
+      });
       await goto(process.env.BASE_URL || "");
       expect(requestHasBeenMade).toBeTruthy();
       done();
@@ -72,13 +59,9 @@ describe("Interact with APIs", () => {
 
       await dropDown().select("PlayStation 4");
 
-      const wrappers = await (
-        await listItem({ class: "list-group-item" })
-      ).elements();
+      const wrappers = await (await listItem({ class: "list-group-item" })).elements();
 
-      const displayedGamesNames = (
-        await Promise.all(wrappers.map((wrapper) => wrapper.text()))
-      ).sort();
+      const displayedGamesNames = (await Promise.all(wrappers.map((wrapper) => wrapper.text()))).sort();
 
       const ps4GamesNames = ps4Games.map((game) => game.name).sort();
 
